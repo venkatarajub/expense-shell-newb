@@ -32,13 +32,13 @@ CHECK_ROOT
 
 echo "Script start date:$(date)"
 
-dnf module disable nodejs -y
+dnf module disable nodejs -y &>>$LOG_FILE
 VALIDATE $? "disabling Nodejs"
 
-dnf module enable nodejs:24 -y
+dnf module enable nodejs:24 -y &>>$LOG_FILE
 VALIDATE $? "enabling Nodejs"
 
-dnf install nodejs -y
+dnf install nodejs -y &>>$LOG_FILE
 VALIDATE $? "instaling Nodejs"
 
 mkdir -p /app
