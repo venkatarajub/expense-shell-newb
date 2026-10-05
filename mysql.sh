@@ -32,13 +32,13 @@ CHECK_ROOT
 
 echo "Script start date:$(date)"
 
-dnf install mysql-server -y
+dnf install mysql-server -y &>>$LOG_FILE
 VALIDATE $? "mysql server install"
 
-systemctl enable mysqld
+systemctl enable mysqld &>>$LOG_FILE
 VALIDATE $? "enable mysqld"
 
-systemctl start mysqld
+systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "start mysqld"
 
 mysql -h mysql.venra.online -u root -pExpenseApp@1 -e 'show databases';
